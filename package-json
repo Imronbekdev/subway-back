@@ -5,16 +5,9 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
-    "dev": "nodemon bot.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon bot.js"
   },
-  "keywords": [
-    "telegram",
-    "bot",
-    "game",
-    "subway-surfers",
-    "webapp"
-  ],
+  "keywords": ["telegram", "bot", "game", "subway-surfers"],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
@@ -22,9 +15,7 @@
     "express": "^4.18.2",
     "mongoose": "^7.5.0"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
   "engines": {
     "node": ">=16.0.0"
   }
+}
