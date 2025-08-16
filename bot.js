@@ -7,7 +7,7 @@ const BOT_TOKEN = '8244070630:AAHR90BB9vmy76DQDKL0ovbqwEDSo7fipx8';
 const WEBAPP_URL = 'https://subway-game-pearl.vercel.app/'; // Will be your deployed game URL
 
 // MongoDB connection (replace with your MongoDB Atlas connection string)
-const MONGODB_URI = 'mongodb+srv://gamebot:<Imronbek06>@cluster0.lvew5ce.mongodb.net/';
+const MONGODB_URI = 'mongodb+srv://gamebot:Imronbek06@cluster0.lvew5ce.mongodb.net/';
 
 // Initialize bot
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
