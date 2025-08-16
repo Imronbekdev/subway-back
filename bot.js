@@ -6,12 +6,23 @@ const mongoose = require('mongoose');
 const BOT_TOKEN = '8244070630:AAHR90BB9vmy76DQDKL0ovbqwEDSo7fipx8';
 const WEBAPP_URL = 'https://subway-game-pearl.vercel.app/'; // Will be your deployed game URL
 
-// MongoDB connection (replace with your MongoDB Atlas connection string)
-const MONGODB_URI = 'mongodb+srv://gamebot:Imronbek06@cluster0.lvew5ce.mongodb.net/';
+// Initialize bot (use webhook for production, polling for development)
+const bot = new TelegramBot(BOT_TOKEN, { 
+    polling: process.env.NODE_ENV !== 'production',
+    webHook: process.env.NODE_ENV === 'production'
+});
 
-// Initialize bot
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
-
+// Set up webhook for production
+if (process.env.NODE_ENV === 'production') {
+    const WEBHOOK_URL = process.env.WEBHOOK_URL || `https://${process.env.RENDER_EXTERNAL_HOSTNAME}`;
+    bot.setWebHook(`${WEBHOOK_URL}/bot${BOT_TOKEN}`);
+    
+    // Handle webhook
+    app.post(`/bot${BOT_TOKEN}`, (req, res) => {
+        bot.processUpdate(req.body);
+        res.sendStatus(200);
+    });
+}
 // Initialize express app for webhooks (optional)
 const app = express();
 app.use(express.json());
